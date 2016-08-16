@@ -21,9 +21,9 @@ FROM biodckr/biodocker
 # install
 RUN conda install samtools=1.3.1
 RUN conda install bedtools=2.25.0
-RUN wget "http://ftp-trace.ncbi.nlm.nih.gov/sra/sdk/2.4.4/sratoolkit.2.4.4-ubuntu64.tar.gz" && \
-  tar zxfv sratoolkit.2.4.4-ubuntu64.tar.gz && \
-  cp -r sratoolkit.2.4.4-ubuntu64/bin/* /usr/bin
+RUN conda install sra-tools
+RUN conda install cutadapt
+RUN conda install hisat2
 
 
 # change workdir to /data/
