@@ -11,7 +11,7 @@ outputParameters:
 - name: OUTPUT
   localCopy:
     disk: datadisk
-    path: output.fastq.gz
+    path: output/*
 resources:
   minimumCpuCores: 1
   minimumRamGb: 1
@@ -34,11 +34,13 @@ sra_to_fastq(){
   local input=$1
   local output=$2
   echo "$yalm" > ./$FUNCNAME.yalm
+  local cmd="
 gcloud alpha genomics pipelines run \
   --pipeline-file ./$FUNCNAME.yalm \
   --logging $output/logs \
   --inputs INPUT=$input \
-  --outputs OUTPUT=$output
+  --outputs OUTPUT=$output"
+  echo "$cmd"
 }
 
 ##sra_to_fastq SRR1575914 "gs://bg-sra"
