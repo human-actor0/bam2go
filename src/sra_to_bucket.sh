@@ -11,7 +11,7 @@ outputParameters:
 - name: OUTPUT
   localCopy:
     disk: datadisk
-    path: output/*
+    path: output
 resources:
   minimumCpuCores: 1
   minimumRamGb: 1
@@ -40,7 +40,7 @@ gcloud alpha genomics pipelines run \
   --logging $output/logs \
   --inputs INPUT=$input \
   --outputs OUTPUT=$output"
-  echo "$cmd"
+  echo "$cmd" | bash
 }
 
 ##sra_to_fastq SRR1575914 "gs://bg-sra"
