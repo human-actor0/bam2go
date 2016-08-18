@@ -1,4 +1,7 @@
 #!/bin/bash
+usage(){
+  echo "$FUNCNAME <SRA id> <bucket id>";
+}
 # INPUT: SRA id
 # OUTPUT: bucket id where output FASTQ files are stored
 yalm='
@@ -42,5 +45,9 @@ gcloud alpha genomics pipelines run \
   --outputs OUTPUT=$output"
   echo "$cmd" | bash
 }
-
+if [ $# -ne 2 ]; then
+  usage; exit;
+exit;
+fi
+sra_to_fastq $1 $2
 ##sra_to_fastq SRR1575914 "gs://bg-sra"
