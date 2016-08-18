@@ -21,7 +21,8 @@ FROM biodckr/biodocker
 # install
 RUN conda install samtools=1.3.1
 RUN conda install bedtools=2.25.0
-RUN conda install sra-tools
+RUN conda install sra-tools && \
+   vdb-config --set repository/user/main/public/cache-enabled=true
 RUN conda install cutadapt
 RUN conda install hisat2
 
