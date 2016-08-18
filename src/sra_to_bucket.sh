@@ -11,7 +11,7 @@ outputParameters:
 - name: OUTPUT
   localCopy:
     disk: datadisk
-    path: output
+    path: output/*
 resources:
   minimumCpuCores: 1
   minimumRamGb: 1
@@ -27,7 +27,7 @@ resources:
     mountPoint: /mnt/data
 docker:
   imageName: actor0/bam2go
-  cmd: "fastq-dump -X 100 --gzip --outdir ${OUTPUT} ${INPUT}"
+  cmd: "fastq-dump --gzip --outdir /mnt/data/output ${INPUT}"
 '
 
 sra_to_fastq(){
